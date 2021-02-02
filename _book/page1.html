@@ -1,0 +1,393 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <title>マテリアルの作成と設定 · HonKit</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 3.6.15">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="styles/website.css">
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="./" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2" data-path="page1.html">
+            
+                <a href="page1.html">
+            
+                    
+                    マテリアルの作成と設定
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >マテリアルの作成と設定</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="マテリアルの作成">マテリアルの作成</h1>
+<h2 id="新規プロジェクトの作成">新規プロジェクトの作成</h2>
+<p><br></p>
+<p>今回は3Dモデルの見た目や質感といった品質を高めるためのマテリアルの設定方法と、基本的な４つのマテリアルの作成方法を解説します。</p>
+<p>まずは新規プロジェクトを作成しましょう。</p>
+<p><img src="img/image1-1.png" alt=""></p>
+<p>UnityHubを開き、右上の新規作成ボタンを押してください。</p>
+<p>テンプレートは3Dのままで、プロジェクト名はなんでも構いません。ここでは「MaterialSample」としておきます。
+保存先を決めたら作成ボタンを押してください。</p>
+<p><br></p>
+<p><img src="img/image1-2.png" alt=""></p>
+<p>Unityが開けたらUnityエディタのレイアウトを任意の形にしてください。
+Unityエディタの右上の「Layout」から好きなレイアウトを設定できます。
+こちらの教材では「2 × 3」を利用します。</p>
+<p>そして新規で「Plane」を作成してください位置はX、Y、Z共に0にしておきましょう。</p>
+<p><br></p>
+<h2 id="シーンビューをゲームビューに合わせる">シーンビューをゲームビューに合わせる</h2>
+<p>マテリアルの設定を見えやすくするためにシーンビューをゲームビューと同じカメラアングルに切り替えます。
+<br></p>
+<p><img src="img/image1-3.png" alt=""></p>
+<p>ヒエラルキーウィンドウでMainCameraを選択してください。
+そして、GameObjectメニューから「Align View to Selected」をクリックしてください。</p>
+<p><br></p>
+<p><img src="img/image1-4.png" alt=""></p>
+<p>そうすると、このようにゲームビューとシーンビューが同じ見た目になりました。<br>これで準備は完了です。</p>
+<p><br></p>
+<h2 id="スフィアの作成">スフィアの作成</h2>
+<p><img src="img/image1-5.png" alt=""></p>
+<p>次にマテリアルを変更するサンプルとしてSphereを配置してください。<br>SphereのTransformを<br>X : 0<br>Y : 1<br>Z : 0 
+に変更してください。
+そしてSphereをシーンビューで拡大しておきます。</p>
+<p><br></p>
+<h2 id="単色マテリアル">単色マテリアル</h2>
+<p>まずは基本の単色マテリアルを設定してみます。<br>単色マテリアルでも金属の質感やコンクリートのような質感を表現することができます。</p>
+<p><br></p>
+<p><img src="img/image1-6.png" alt=""></p>
+<p>まずはプロジェクトウィンドウから新規フォルダを作成し、名前を「Materials」に変更してください。
+そしてその中に「GreenMaterial」という名前の新規マテリアルを作成し、格納します。<br>そして、先ほど作成したSphereにアタッチしてください。<br>この一連の作業が分からない場合は前回までの教材等で調べながら挑戦してみましょう。  </p>
+<p>マテリアルをアタッチできたら上記の画像のようにSphereが緑色になっているかと思います。</p>
+<p><br></p>
+<p><img src="img/image1-7.png" alt=""></p>
+<p>ここまでできたら、GreenMaterialを選択し、インスペクターウィンドウから「Metallic」と「Smoothness」の値を変更してみましょう。<br>MetallicとSmoothnessの値を1に近づけるとより金属のようになり、0に近づけると光沢のないマットな質感に変わるかと思います。</p>
+<p><br></p>
+<h2 id="テクスチャ画像マテリアル">テクスチャ画像マテリアル</h2>
+<p><br></p>
+<p>次に画像を使ったマテリアルをアタッチします。<br>画像を使うと、木目やレンガ、壁紙といった見た目のマテリアルを簡単に作成することができます。</p>
+<p><br></p>
+<p><img src="img/image1-8.png" alt=""></p>
+<p>通常のテクスチャ（画像）をインポートして使用しても構わないのですが、普通の画像のみだと例えば木目の凹凸や傷などが表現しきれず、のっぺりとした質感になってしまいます。<br>Unityではそのような画像に凹凸や傷などの立体感を出すためにノーマルマップ（法線マッピング）を貼り付けるのですが、こちらはPhotoshopやBlenderといった専用のアプリケーション等で制作する必要があるので、今回はAssetStoreからダウンロードして作成していきたいと思います。</p>
+<p>どのテクスチャを使用しても構わないのですが、今回は「WoodenFloorMaterials」を利用します。<br>AssetStoreからこちらを検索し、インポートしてください。少し時間がかかるかもしれません。</p>
+<p><br></p>
+<p><img src="img/image1-9.png" alt=""></p>
+<p>インポートが完了したら、プロジェクトウィンドウから「Assets -&gt; Free -&gt; WoodenFloorPack -&gt; Materials -&gt; FoodenFloor」をヒエラルキーのPlaneにドラッグ&amp;ドロップでアタッチしてください。<br>こちらは既にノーマルマップが設定されていますので、きちんと凹凸が表現され、ただの画像を利用するよりも質感が高くなっています。</p>
+<p><br></p>
+<p><img src="img/image1-10.png" alt=""></p>
+<p>このままでも十分なのですが、今回のPlaneの広さに対してテクスチャが少し大きく配置されてしまっているので調整します。<br>プロジェクトウィンドウからWoodenFloorを選択し、インスペクターの「Tiling」のX、Yをそれぞれ4に変更してください。</p>
+<p>これでより細かい木目のタイルになりました。</p>
+<p>Tilingはテクスチャ全体を何枚表示にするのかを設定します。<br>X、Yとも4にすると、「4×4」の計16枚の画像を並べているように見えます。
+長い廊下等を作成する場合は1枚のPlaneを拡大させてテクスチャを貼ると、伸びたようになってしまうのでTilingを使ってちょうどいい配置にする必要があります。</p>
+<p><br></p>
+<p><img src="img/image1-10.png" alt=""></p>
+<p>ヒエラルキーウィンドウでCapsuleが選択されているのを確認し、インスペクターウィンドウで、RigidbodyのConstraintsの「▶︎」をクリックし展開します。<br>そして「FreezeRotation」の項目のX、Y、Zにチェックを入れてください。</p>
+<p>これで実行してみると、家具に当たっても転倒しなくなりました。</p>
+<p><br></p>
+<h2 id="視点を動かすスクリプトの作成">視点を動かすスクリプトの作成</h2>
+<p>次のステップとしてCapsuleにカメラを取り付け、一緒に動くようにし、さらにマウスで上下左右を見渡せるようにしたいと思います。</p>
+<h3 id="capsuleにカメラをつける">Capsuleにカメラをつける</h3>
+<p><img src="img/image1-11.png" alt=""></p>
+<p>まずはヒエラルキーウィンドウでCameraをCapsuleの子要素にしてください。<br>そして、CameraのTransformを<br>Position X : 0<br>Position Y : 0.8<br>Position Z : -0.2</p>
+<p>Scale X : 1<br>Scale Y : 1<br>Scale Z : 1</p>
+<p>に変更してください。<br>これで人の目線と同じような高さでカメラを移動させるようにできました。</p>
+<div class="point">
+    CameraのZ座標に「-0.2」を代入すると、壁についた時に壁の外側が見えてしまうバグを予防することができます。（カメラをCapsuleの内側に移動させたため）
+</div>
+
+<p><br></p>
+<h3 id="視点変更のスクリプト追加">視点変更のスクリプト追加</h3>
+<p>現状だと視点が固定されているのでマウスで自由に変更できるようにします。</p>
+<p><img src="img/image1-12.png" alt=""></p>
+<p>プロジェクトウィンドウで新規スクリプトを作成し、名前を「CameraController」としてください。<br>そしてそのスクリプトをScripsフォルダに格納し、ヒエラルキーウィンドウのCapsuleにアタッチしてください。<br>次にこのCameraScriptをVisualStudioで開きます。</p>
+<p><br></p>
+<p>CameraControllerスクリプトを開いたらコードを以下のように変更してください。</p>
+<pre><code class="lang-c#"><span class="hljs-keyword">using</span> System.Collections;
+<span class="hljs-keyword">using</span> System.Collections.Generic;
+<span class="hljs-keyword">using</span> UnityEngine;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">CameraController</span> : <span class="hljs-title">MonoBehaviour</span>
+{
+    <span class="hljs-keyword">public</span> GameObject cameraView;
+
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Start</span>(<span class="hljs-params"></span>)</span>
+    {
+
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Update</span>(<span class="hljs-params"></span>)</span>
+    {
+        <span class="hljs-built_in">float</span> mouseX = Input.GetAxis(<span class="hljs-string">&quot;Mouse X&quot;</span>);
+        <span class="hljs-built_in">float</span> mouseY = Input.GetAxis(<span class="hljs-string">&quot;Mouse Y&quot;</span>);
+
+        transform.Rotate(<span class="hljs-number">0.0f</span>, mouseX, <span class="hljs-number">0.0f</span>);
+        cameraView.transform.Rotate(-mouseY, <span class="hljs-number">0.0f</span>, <span class="hljs-number">0.0f</span>);
+    }
+}
+</code></pre>
+<p>ここまで記述終わりましたら、コードを保存してUnityに戻りましょう。</p>
+<p><br></p>
+<p><img src="img/image1-13.png" alt=""></p>
+<p>CapsuleのインスペクターのCameraControllerにCameraViewという項目が追加されていると思うので、そこにヒエラルキーからCameraをドラッグ&amp;ドロップしてください。<br>ここまでできたら一度Unityを実行してみましょう。</p>
+<p>マウスの移動に合わせて視点が上下左右に移動できていれば成功です。</p>
+<p><img src="img/image1-14.png" alt=""></p>
+<p>忘れずにUnityを保存しておきましょう。</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="./" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Introduction">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"マテリアルの作成と設定","level":"1.2","depth":1,"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"page1.md","mtime":"2021-02-02T09:51:12.582Z","type":"markdown"},"gitbook":{"version":"3.6.15","time":"2021-02-02T09:56:08.511Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
