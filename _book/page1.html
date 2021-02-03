@@ -183,7 +183,8 @@ Unityエディタの右上の「Layout」から好きなレイアウトを設定
 そして、GameObjectメニューから「Align View to Selected」をクリックしてください。</p>
 <p><br></p>
 <p><img src="img/image1-4.png" alt=""></p>
-<p>そうすると、このようにゲームビューとシーンビューが同じ見た目になりました。<br>これで準備は完了です。</p>
+<p>そうすると、このようにゲームビューとシーンビューが同じ見た目になりました。<br>これで準備は完了です。  </p>
+<p>シーンビューが全体的に暗いといった場合は、Windowタブから「Rendering -&gt; LightingSettings -&gt; AutoGenerate」にチェックを入れてください。<br>PCへの負荷がかかりますが、きちんと光が表現できるようになります。</p>
 <p><br></p>
 <h2 id="スフィアの作成">スフィアの作成</h2>
 <p><img src="img/image1-5.png" alt=""></p>
@@ -219,9 +220,8 @@ Unityエディタの右上の「Layout」から好きなレイアウトを設定
 <p>Tilingはテクスチャ全体を何枚表示にするのかを設定します。<br>X、Yとも4にすると、「4×4」の計16枚の画像を並べているように見えます。
 長い廊下等を作成する場合は1枚のPlaneを拡大させてテクスチャを貼ると、伸びたようになってしまうのでTilingを使ってちょうどいい配置にする必要があります。</p>
 <p><br></p>
-<p><img src="img/image1-10.png" alt=""></p>
-<p>ヒエラルキーウィンドウでCapsuleが選択されているのを確認し、インスペクターウィンドウで、RigidbodyのConstraintsの「▶︎」をクリックし展開します。<br>そして「FreezeRotation」の項目のX、Y、Zにチェックを入れてください。</p>
-<p>これで実行してみると、家具に当たっても転倒しなくなりました。</p>
+<p><img src="img/image1-11.png" alt=""></p>
+<p>また、プロジェクトウィンドウで「WoodenFloor」を選択し、インスペクターウィンドウのアルベドのカラーを変更すると、上の画像のように色を乗算することもできます。</p>
 <p><br></p>
 <h2 id="視点を動かすスクリプトの作成">視点を動かすスクリプトの作成</h2>
 <p>次のステップとしてCapsuleにカメラを取り付け、一緒に動くようにし、さらにマウスで上下左右を見渡せるようにしたいと思います。</p>
@@ -310,7 +310,7 @@ Unityエディタの右上の「Layout」から好きなレイアウトを設定
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"マテリアルの作成と設定","level":"1.2","depth":1,"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"page1.md","mtime":"2021-02-02T09:51:12.582Z","type":"markdown"},"gitbook":{"version":"3.6.15","time":"2021-02-02T09:56:08.511Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"マテリアルの作成と設定","level":"1.2","depth":1,"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"page1.md","mtime":"2021-02-02T10:00:09.076Z","type":"markdown"},"gitbook":{"version":"3.6.15","time":"2021-02-03T02:34:49.665Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
