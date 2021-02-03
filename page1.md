@@ -144,77 +144,67 @@ X、Yとも4にすると、「4×4」の計16枚の画像を並べているよ�
 
 ### Sphereを複製する
 
-![](img/image1-11.png)
-
-まずはヒエラルキーウィンドウでCameraをCapsuleの子要素にしてください。  
-そして、CameraのTransformを  
-Position X : 0  
-Position Y : 0.8  
-Position Z : -0.2
-
-Scale X : 1  
-Scale Y : 1  
-Scale Z : 1
-
-に変更してください。  
-これで人の目線と同じような高さでカメラを移動させるようにできました。
-
-<div class="point">
-    CameraのZ座標に「-0.2」を代入すると、壁についた時に壁の外側が見えてしまうバグを予防することができます。（カメラをCapsuleの内側に移動させたため）
-</div>
-
-<br>
-
-### 視点変更のスクリプト追加
-
-現状だと視点が固定されているのでマウスで自由に変更できるようにします。
-
 ![](img/image1-12.png)
 
-プロジェクトウィンドウで新規スクリプトを作成し、名前を「CameraController」としてください。  
-そしてそのスクリプトをScripsフォルダに格納し、ヒエラルキーウィンドウのCapsuleにアタッチしてください。  
-次にこのCameraScriptをVisualStudioで開きます。
-
-<br>
-
-CameraControllerスクリプトを開いたらコードを以下のように変更してください。
-
-```c#
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class CameraController : MonoBehaviour
-{
-    public GameObject cameraView;
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        float mouseX = Input.GetAxis("Mouse X");
-        float mouseY = Input.GetAxis("Mouse Y");
-
-        transform.Rotate(0.0f, mouseX, 0.0f);
-        cameraView.transform.Rotate(-mouseY, 0.0f, 0.0f);
-    }
-}
-```
-
-ここまで記述終わりましたら、コードを保存してUnityに戻りましょう。
+ヒエラルキーウィンドウでSphereを選択し、Windowsの方は「Ctrl + n」、Macの方は「Cmd + n」を押してスフィアを複製します。  
+そして名前を「GlassSphere」とし、PositionXを1.5に変更してください。  
+これで複製されたスフィアが横に移動されました。
 
 <br>
 
 ![](img/image1-13.png)
 
-CapsuleのインスペクターのCameraControllerにCameraViewという項目が追加されていると思うので、そこにヒエラルキーからCameraをドラッグ&ドロップしてください。  
-ここまでできたら一度Unityを実行してみましょう。
+次にプロジェクトウィンドウのMaterialsフォルダの中に新規マテリアルを作成し、名前を「GlassMaterial」とします。  
+そしてそのマテリアルをヒエラルキーのGlassSphereにドラッグ&ドロップでアタッチしてください。
 
-マウスの移動に合わせて視点が上下左右に移動できていれば成功です。
+<br>
 
 ![](img/image1-14.png)
 
-忘れずにUnityを保存しておきましょう。
+次に色を変更します。  
+今回はガラスのような質感にしたいのでカラーサークルの下にあるRGBAのA（透明度）の部分の数値を25程度にしてください。  
+その他の色は任意のカラーにしてもらって構いません。そして、Metallicの数値を0.5、Smoothnessの数値を1に変更してください。
+
+本来であれば、これでガラスのような質感を出すことができるのですが、アルファ値を下げたのにも関わらずスフィアが半透明になっていません。
+
+これは「RenderingMode」を変更していない為です。
+
+## Rendering Modeとは
+
+RenderingModeとは、オブジェクトで透明度を使用するかどうかを選択することができ、さらに透明度の透過方法選択することができます。  
+こちらには４つのモードが存在します。
+
+
+### Opaque
+
+デフォルトのモードで、透明にすることができなくなります。特に透明要素を扱わないオブジェクトは全般的にこのモードになります。
+
+<hr>
+
+### Cutout
+
+透明か不透明かの２種類のみを扱うモードになります。半透明が存在しないので、主に木の葉や穴の空いた服などのマテリアルに利用されます。
+
+<hr>
+
+### Transparent
+
+アルファ値に基づいた透明度になりますが、反射や照明の影響を受けます。プラスチックやガラスなどの質感を出すときに利用されます。
+
+<hr>
+
+### Fade
+
+反射やハイライトがあっても完全に透明にすることができます。ホログラムや被ダメージ後の点滅などのフェードイン・アウトなどの表現に利用されます。
+
+
+<br>
+
+このように、マテリアルには４つのモードが存在するので、自分が意図した表現に適したモードを選択するようにしてください。  
+今回は、ガラスのような質感を出したいのでRenderingModeを「Transparent」にしてください。
+
+<br>
+
+![](img/image1-15.png)
+
+そうすると、このようにスフィアが半透明になり、ガラス玉のような質感になったかと思います。
