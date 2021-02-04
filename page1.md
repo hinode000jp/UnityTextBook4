@@ -235,3 +235,69 @@ RenderingModeとは、オブジェクトで透明度を使用するかどうか�
 次に、周囲の風景を反射させるためにReflectionProbeを作成します。  
 こちらは容易に反射を作成することができるのですが、処理が重いため多用する場合は注意してください。
 
+<br>
+
+![](img/image1-17.png)
+
+ヒエラルキーウィンドウで右クリックし、「Light -> ReflectionProbe」を選択してください。  
+そうすると、新規でReflectionProebeが作成されるので、座標をMirrorSphereと同じ位置にしてください。
+
+<br>
+
+![](img/image1-18.png)
+
+ReflectionProbeのデフォルトでの反射対象オブジェクトは静的（static）オブジェクトのみになっています。  
+ですので、ヒエラルキーウィンドウでPlaneと全てのスフィアを選択し、インスペクターウィンドウで「Static」にチェックを入れてください。
+
+<br>
+
+![](img/image1-19.png)
+
+そうすると、自動的にBakeが実行されます。しばらく待っているとMirrorSphereに周りの背景が反射して表示されるようになったかと思います。
+
+<div class="point">
+    <h3>Bakeとは</h3>
+    Bakeとは、あらかじめ影や反射を計算してテクスチャに反映させる処理のことです。  
+    リアルタイムではなくベイク（焼き込み）にすることでアプリケーションの負荷を減らし画面の角付きやパソコンへの負荷を減らすことができます。
+</div>
+
+<br>
+
+自動でBakeしなかった場合はWindowタブから「Rendering -> LightingSettings」から「AutoGenerate」をチェックしてください。
+
+<br>
+
+![](img/image1-20.png)
+
+これで綺麗に周りの背景を反射する鏡のマテリアルになったのですが、最初に作成したスフィアを見てもらうと、こちらも同様な形で反射が適用されています。
+
+<br>
+
+![](img/image1-21.png)
+
+こちらは特に反射は適用させる必要がないのでReflectionProbeを無効にしたいと思います。  
+無効にする方法は、ヒエラルキーウィンドウでSphereを選択し、インスペクターウィンドウのMeshRendererコンポーネントにある「ReflectionProbe」をOffにするだけです。
+
+同様にGlassSphereのReflectionProbeも変更したいと思います。  
+ただしこちらはガラスを表現したマテリアルなので、周りからの反射を反映させたいと思います。
+
+現在は最初に作成したReflectionProbeの反射が反映されているので不自然な写り込みになっているので、このGlassSphere用のReflectionProbeを作成します。
+
+<br>
+
+![](img/image1-22.png)
+
+まずはヒエラルキーウィンドウから「Light -> ReflectionProbe」を新規作成してください。  
+そして座標をGlassSphereと同じ位置にします。
+
+少しゲームビューのカメラの位置が遠いので近づけておきましょう。
+
+
+<br>
+
+![](img/image1-23.png)
+
+もし別のReflectionProbeも反映されている場合は、インスペクターウィンドウのReflectionProbesをSimpleに変更してください。  
+これでガラスの反射の方も完成です。
+
+ここまで作り終わりましたら忘れずに保存しておきましょう。
