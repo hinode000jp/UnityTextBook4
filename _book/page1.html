@@ -228,7 +228,7 @@ Unityエディタの右上の「Layout」から好きなレイアウトを設定
 <p><br></p>
 <h3 id="sphereを複製する">Sphereを複製する</h3>
 <p><img src="img/image1-12.png" alt=""></p>
-<p>ヒエラルキーウィンドウでSphereを選択し、Windowsの方は「Ctrl + n」、Macの方は「Cmd + n」を押してスフィアを複製します。<br>そして名前を「GlassSphere」とし、PositionXを1.5に変更してください。<br>これで複製されたスフィアが横に移動されました。</p>
+<p>ヒエラルキーウィンドウでSphereを選択し、Windowsの方は「Ctrl + d」、Macの方は「Cmd + d」を押してスフィアを複製します。<br>そして名前を「GlassSphere」とし、PositionXを1.5に変更してください。<br>これで複製されたスフィアが横に移動されました。</p>
 <p><br></p>
 <p><img src="img/image1-13.png" alt=""></p>
 <p>次にプロジェクトウィンドウのMaterialsフォルダの中に新規マテリアルを作成し、名前を「GlassMaterial」とします。<br>そしてそのマテリアルをヒエラルキーのGlassSphereにドラッグ&amp;ドロップでアタッチしてください。</p>
@@ -253,11 +253,23 @@ Unityエディタの右上の「Layout」から好きなレイアウトを設定
 
 <h3 id="fade">Fade</h3>
 <p>反射やハイライトがあっても完全に透明にすることができます。ホログラムや被ダメージ後の点滅などのフェードイン・アウトなどの表現に利用されます。</p>
+<hr>
+
 <p><br></p>
 <p>このように、マテリアルには４つのモードが存在するので、自分が意図した表現に適したモードを選択するようにしてください。<br>今回は、ガラスのような質感を出したいのでRenderingModeを「Transparent」にしてください。</p>
 <p><br></p>
 <p><img src="img/image1-15.png" alt=""></p>
 <p>そうすると、このようにスフィアが半透明になり、ガラス玉のような質感になったかと思います。</p>
+<p><br></p>
+<h2 id="鏡のマテリアル">鏡のマテリアル</h2>
+<p>最後に鏡の質感を再現するマテリアルを作成します。鏡は写り込みの範囲等を設定する必要があるので少し複雑になります。</p>
+<h3 id="sphereを複製する">Sphereを複製する</h3>
+<p><img src="img/image1-16.png" alt=""></p>
+<p>ヒエラルキーウィンドウでSphereを選択し、Windowsの方は「Ctrl + d」、Macの方は「Cmd + d」を押してスフィアを複製します。<br>そして名前を「MirrorSphere」とし、PositionXを-1.5に変更してください。<br>これで複製されたスフィアが横に移動されました。</p>
+<p>次に、プロジェクトウィンドウからGreenMaterialを選択し、Sphereと同様に複製します。<br>そして名前を「MirrorMaterial」に変更し、カラーを白に、MetallicとSmoothnessを1にしてください。<br>最後にこのMirrorMaterialをMirrorSphereアタッチして準備は完了です。</p>
+<p><br></p>
+<h3 id="reflectionprobeの配置">ReflectionProbeの配置</h3>
+<p>次に、周囲の風景を反射させるためにReflectionProbeを作成します。<br>こちらは容易に反射を作成することができるのですが、処理が重いため多用する場合は注意してください。</p>
 
                                 
                                 </section>
@@ -297,7 +309,7 @@ Unityエディタの右上の「Layout」から好きなレイアウトを設定
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"マテリアルの作成と設定","level":"1.2","depth":1,"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"page1.md","mtime":"2021-02-03T04:58:41.937Z","type":"markdown"},"gitbook":{"version":"3.6.15","time":"2021-02-03T05:00:41.892Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"マテリアルの作成と設定","level":"1.2","depth":1,"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"page1.md","mtime":"2021-02-03T04:58:41.937Z","type":"markdown"},"gitbook":{"version":"3.6.15","time":"2021-02-04T02:17:25.572Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
@@ -349,6 +361,10 @@ Unityエディタの右上の「Layout」から好きなレイアウトを設定
     </script>
     <script src="gitbook/gitbook.js"></script>
     <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
     
         
         <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
