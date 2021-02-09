@@ -229,40 +229,16 @@
 <p>次にポイントライトの座標を「X:0、Y:2、Z:0」に変更してください。これでスフィアの上にポイントライトを配置できたかと思います。<br>また、光源が少し小さいのでIntensityの値を2に変更してください。</p>
 <p>デフォルトでは影の表示が非表示になっているのでインスペクターウィンドウのShadowTypeを「SoftShadows」に変更してください。
 これで地面にスフィアの影が投影されているかと思います。<br>そしてLightのRangeで効果範囲を指定することができます。</p>
-<p>これでスタートボタンの配置は完了です。<br>あとはこのスタートボタンを押したら先程のSampleSceneへ画面遷移させるようにします。</p>
+<p>このようにポイントライトは暗い場所をふわっと明るくしたり、焚き火の炎の明るさを表現する時などに有効です。<br>Position（位置）、Range（到達範囲）、Intensity（光の強さ）の設定が重要になってきます。</p>
 <p><br></p>
-<h2 id="画面遷移">画面遷移</h2>
+<h2 id="スポットライト">スポットライト</h2>
 <p><img src="img/image2-6.png" alt=""></p>
-<p>まずは新規で空のゲームオブジェクトを作成します。<br>空のオブジェクトの作成方法はヒエラルキーから「CreateEmpty」を選択します。</p>
-<p>そして、名前をGameManagerにして下さい。</p>
-<p>GameManagerに新規でスクリプトを作成し、名前を「ScreenManager」とします。<br>作成したスクリプトはScriptsフォルダに格納しておいて下さい。</p>
+<p>次にスポットライトを作成したいと思います。<br>まずは現在設定されているポイントライトを非アクティブにしてヒエラルキーウィンドウから「Light -&gt; SpotLight」を選択し、新規でスポットライトを作成してください。</p>
+<p>次にスポットライトのY座標を3にしてください。</p>
+<p>これでスポットライトがスフィアの上に配置され下のスフィアを照らすようになりました。</p>
 <p><br></p>
-<p>そしてこのScreenManagerスクリプトをVisualStudioで開きます。</p>
-<p>そしてコードを以下のように変更して下さい。</p>
-<pre><code class="lang-c#"><span class="hljs-keyword">using</span> System.Collections;
-<span class="hljs-keyword">using</span> System.Collections.Generic;
-<span class="hljs-keyword">using</span> UnityEngine;
-<span class="hljs-keyword">using</span> UnityEngine.SceneManagement;
-
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">ScreenManager</span> : <span class="hljs-title">MonoBehaviour</span>
-{
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnClickStartButton</span>(<span class="hljs-params"></span>)</span>
-    {
-        SceneManager.LoadScene(<span class="hljs-string">&quot;SampleScene&quot;</span>);
-    }
-}
-</code></pre>
-<p>まず<code>using UnityEngine.SceneManagement;</code>でこのファイル内でSceneManagement機能を使えるようにしておきます。</p>
-<p>次にOnClickStartButtonメソッドを作成します。<br>ここで注意してもらいたいのが、このメソッドがパブリックメソッドになっている点です。</p>
-<p>パブリックにした理由は、このメソッドを外部（ボタン）から呼び出せるようにするためです。このメソッドをprivateにしているとこのファイル内でしか扱えなくなり、ボタンクリックで呼び出せなくなるので気をつけて下さい。</p>
-<p><code>SceneManager.LoadScene(&quot;SampleScene&quot;);</code>で<code>SceneneManager</code>クラスの<code>LoadScene</code>メソッドを利用してSampleSceneという名前のシーンを読み込むようにしています。<br><code>LoadScene</code>メソッドは括弧内の引数に記述されたシーンを読み込むという命令文になっています。</p>
-<p>ここまで記述終わりましたら保存してUnityに戻りましよう。</p>
-<p><br></p>
-<p><img src="img/image2-7.gif" alt=""></p>
-<p>Unityに戻ったら、ヒエラルキーウィンドウでStartButtonを選択し、インスペクターウィンドウから「OnClick()」を見つけて下さい。</p>
-<p>OnClick()を見つけたら、そちらの「＋」アイコンをクリックします。<br>こちらのOnClick()はボタンがクリックされた時の動作を設定するパラメータです。</p>
-<p>そうすると、上記の画像のような項目が追加されますので、その空欄の部分にヒエラルキーウィンドウから「GameManager」オブジェクトをドラッグ&amp;ドロップして下さい。</p>
-<p>次に右側の項目から「ScreenManager -&gt; OnClickStartButton()」を選択します。ScreenManagerが表示されない場合は、GameManagerオブジェクトにScreenManagerスクリプトがアタッチされているか確認して下さい。<br>OnClickStartButton()が項目にない場合はこのメソッドがきちんとパブリックメソッドになっているか確認して下さい。</p>
+<p><img src="img/image2-7.png" alt=""></p>
+<p>スポットライトは名前のまま、円錐型に放射される光源です。<br>Rangeで光が届く範囲の距離を、SpotAngleで光が届く範囲の広さを指定します。そしてこのライトも減衰します。色々パラメーターをいじって調整してみてください。</p>
 <p><br></p>
 <p><img src="img/image2-8.gif" alt=""></p>
 <p>次に、シーンをBuildするシーンとして登録します。</p>

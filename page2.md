@@ -124,70 +124,29 @@ Planeの座標は画面の中央（X:0、Y:0、Z:0）にし、スフィアの座
 これで地面にスフィアの影が投影されているかと思います。  
 そしてLightのRangeで効果範囲を指定することができます。
 
-これでスタートボタンの配置は完了です。  
-あとはこのスタートボタンを押したら先程のSampleSceneへ画面遷移させるようにします。
+このようにポイントライトは暗い場所をふわっと明るくしたり、焚き火の炎の明るさを表現する時などに有効です。  
+Position（位置）、Range（到達範囲）、Intensity（光の強さ）の設定が重要になってきます。
 
 <br>
 
-## 画面遷移
+## スポットライト
 
 ![](img/image2-6.png)
 
-まずは新規で空のゲームオブジェクトを作成します。  
-空のオブジェクトの作成方法はヒエラルキーから「CreateEmpty」を選択します。
+次にスポットライトを作成したいと思います。  
+まずは現在設定されているポイントライトを非アクティブにしてヒエラルキーウィンドウから「Light -> SpotLight」を選択し、新規でスポットライトを作成してください。
 
-そして、名前をGameManagerにして下さい。
+次にスポットライトのY座標を3にしてください。
 
-GameManagerに新規でスクリプトを作成し、名前を「ScreenManager」とします。  
-作成したスクリプトはScriptsフォルダに格納しておいて下さい。
+これでスポットライトがスフィアの上に配置され下のスフィアを照らすようになりました。
 
-<br>
-
-そしてこのScreenManagerスクリプトをVisualStudioで開きます。
-
-そしてコードを以下のように変更して下さい。
-
-```c#
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-
-public class ScreenManager : MonoBehaviour
-{
-    public void OnClickStartButton()
-    {
-        SceneManager.LoadScene("SampleScene");
-    }
-}
-```
-
-まず`using UnityEngine.SceneManagement;`でこのファイル内でSceneManagement機能を使えるようにしておきます。
-
-次にOnClickStartButtonメソッドを作成します。  
-ここで注意してもらいたいのが、このメソッドがパブリックメソッドになっている点です。
-
-パブリックにした理由は、このメソッドを外部（ボタン）から呼び出せるようにするためです。このメソッドをprivateにしているとこのファイル内でしか扱えなくなり、ボタンクリックで呼び出せなくなるので気をつけて下さい。
-
-`SceneManager.LoadScene("SampleScene");`で`SceneneManager`クラスの`LoadScene`メソッドを利用してSampleSceneという名前のシーンを読み込むようにしています。  
-`LoadScene`メソッドは括弧内の引数に記述されたシーンを読み込むという命令文になっています。
-
-ここまで記述終わりましたら保存してUnityに戻りましよう。
 
 <br>
 
-![](img/image2-7.gif)
+![](img/image2-7.png)
 
-Unityに戻ったら、ヒエラルキーウィンドウでStartButtonを選択し、インスペクターウィンドウから「OnClick()」を見つけて下さい。
-
-OnClick()を見つけたら、そちらの「＋」アイコンをクリックします。  
-こちらのOnClick()はボタンがクリックされた時の動作を設定するパラメータです。
-
-そうすると、上記の画像のような項目が追加されますので、その空欄の部分にヒエラルキーウィンドウから「GameManager」オブジェクトをドラッグ&ドロップして下さい。
-
-次に右側の項目から「ScreenManager -> OnClickStartButton()」を選択します。ScreenManagerが表示されない場合は、GameManagerオブジェクトにScreenManagerスクリプトがアタッチされているか確認して下さい。  
-OnClickStartButton()が項目にない場合はこのメソッドがきちんとパブリックメソッドになっているか確認して下さい。
-
+スポットライトは名前のまま、円錐型に放射される光源です。  
+Rangeで光が届く範囲の距離を、SpotAngleで光が届く範囲の広さを指定します。そしてこのライトも減衰します。色々パラメーターをいじって調整してみてください。
 
 <br>
 
