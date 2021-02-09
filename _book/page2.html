@@ -240,26 +240,18 @@
 <p><img src="img/image2-7.png" alt=""></p>
 <p>スポットライトは名前のまま、円錐型に放射される光源です。<br>Rangeで光が届く範囲の距離を、SpotAngleで光が届く範囲の広さを指定します。そしてこのライトも減衰します。色々パラメーターをいじって調整してみてください。</p>
 <p><br></p>
-<p><img src="img/image2-8.gif" alt=""></p>
-<p>次に、シーンをBuildするシーンとして登録します。</p>
-<p>Unityから「File -&gt; BuildSettings」を開きましょう。</p>
-<p>そして、右上の方にある「AddOpenScenes」をクリックして下さい。<br>これで現在のシーンを登録できました。<br>次にゲームシーンである「SampleScene」も登録します。プロジェクトウィンドウからSampleSceneをドラッグ&amp;ドロップで「ScenensInBuild」の場所に追加して下さい。<br>これで登録は完了です。</p>
-<div class="warning">
-    シーンは上から順番に再生されるので上にTitleSceneを配置して下さい。<br>
-    順番はドラッグ&amp;ドロップでも変更できます。
-</div>
-
+<h2 id="エリアライト">エリアライト</h2>
+<p>次にエリアライトを設定します。<br>エリアライトは面光源で、基本的に長方形の形をしており、片面から光を投射するライトです。静的に設定されたオブジェクトのみに作用します。</p>
+<p>蛍光灯の照明や、窓の外に配置して窓から差し込む光を表現する時などに利用されます。</p>
+<p>例えば大きな部屋の中で絶対に動かない家具や小物などをStaticにしてスポットライトを利用すれば、あまりデータを重くせずに繊細な光や影を表現することができます。</p>
 <p><br></p>
-<p>こちらのウィンドウを消してUnityを保存し、実行してみましょう。</p>
-<p>Startボタンを押してきちんと画面遷移（Unityちゃんがいるシーンに移動）できていれば成功です。</p>
-<h2 id="ゲームのビルド">ゲームのビルド</h2>
-<p>次に現在のUnityのプロジェクトをビルドしたいと思います。<br>今回はPCゲームとしてビルドしてみましょう。<br>ただし、このままでもビルドできるのですが１つ問題点があります。</p>
-<p>それは現状のままアプリをビルドすると、アプリが全画面で表示され、終了させる事ができないという点です。</p>
-<p>WebGLへのビルドはブラウザの閉じるボタンをクリックすれば終了できるのですが、PCゲームだと終了ボタンを作らないと強制終了しか終わらせる方法がありません。</p>
-<p>ですので、今回は「ESC」ボタンを押したらアプリを終了できるように修正します。</p>
+<p><img src="img/image2-8.png" alt=""></p>
+<p>まずは現在表示されているスポットライトを非アクティブにしましょう。</p>
+<p>そしてヒエラルキーウィンドウからAreaLightを選択してください。
+次にY座標を3に変更してください。<br>これでスフィアの上にエリアライトを配置することができました。しかし、エリアライトはStaticなオブジェクトにのみ適用されるので何も変化がありません。  </p>
 <p><br></p>
 <p><img src="img/image2-9.png" alt=""></p>
-<p>まずはプロジェクトウィンドウで新規に「GameQuit」スクリプトを作成し、Scriptsフォルダに格納して下さい。</p>
+<p>エリアライトを適用させるためにヒエラルキーウィンドウでSphereとPlaneを選択し、インスペクターウィンドウでStaticにチェックを入れてください。<br>しばらく待っていると、Bakeが実行されてきちんと光が投影されました。少し光源が弱いのでIntensityの値を4に変更してください。</p>
 <p><br></p>
 <p>そしてGameQuitスクリプトをVisualStudioで開き、コードを以下のように変更して下さい。</p>
 <pre><code class="lang-c#"><span class="hljs-keyword">using</span> System.Collections;
@@ -362,7 +354,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"ライトの作成と配置","level":"1.3","depth":1,"previous":{"title":"マテリアルの作成と設定","level":"1.2","depth":1,"path":"page1.md","ref":"./page1.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"page2.md","mtime":"2021-02-09T01:19:55.864Z","type":"markdown"},"gitbook":{"version":"3.6.15","time":"2021-02-09T01:20:21.085Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"ライトの作成と配置","level":"1.3","depth":1,"previous":{"title":"マテリアルの作成と設定","level":"1.2","depth":1,"path":"page1.md","ref":"./page1.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"page2.md","mtime":"2021-02-09T06:39:20.277Z","type":"markdown"},"gitbook":{"version":"3.6.15","time":"2021-02-09T06:39:43.990Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
