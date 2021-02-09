@@ -1,0 +1,472 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <title>ライトの作成と配置 · HonKit</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 3.6.15">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="styles/website.css">
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="page1.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="page1.html">
+            
+                <a href="page1.html">
+            
+                    
+                    マテリアルの作成と設定
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3" data-path="page2.html">
+            
+                <a href="page2.html">
+            
+                    
+                    ライトの作成と配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >ライトの作成と配置</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="ライトの作成と配置">ライトの作成と配置</h1>
+<p>Unityが3Dオブジェクトのシェーディングを計算するためには、そのオブジェクトに当たる光の強度、方向、色の情報が必要です。</p>
+<p>これらのプロパティは、シーン内にあるLightオブジェクトによって提供されます。ライトのタイプが異なると、異なる方法で設定された色を発します。<br>ライトの中には、光源から距離で減衰するものもあります。</p>
+<p>Unityでは色々な使用目的で、複雑で高度なライティング効果を様々な異なる方法で計算することが可能です。</p>
+<p>Unityのライティング方法は大まかにいうと、「リアルタイム」のものと、「事前計算」によるものがあり、両方組み合わせて使うことでシーンのライティングをより印象的にできます。</p>
+<h2 id="リアルタイムライティング">リアルタイムライティング</h2>
+<p>デフォルトでは、Unityにはディレクショナルライト、スポットライト、ポイントライトがあります。それらのライトはシーンのダイレクトライトとともに、毎フレーム更新されます。ライトとゲームオブジェクトがシーン内で移動すると、ライトは即座に更新されます。これはシーンとゲームビューどちらでも確認できます。</p>
+<p>リアルタイムライティングはシーン内のオブジェクトをライティングする最も基本的な方法で、キャラクターなどの動くジオメトリを照らすのに向いています。<br>残念ながらUnityのリアルタイムライトから放たれる光は、一度放たれた後は反射しません。より写実的でリアルなシーンを作成するためには、事前計算によるライティングを有効にして、グローバルイルミネーションなどの技法を使います。</p>
+<h2 id="ライトマップのベイク">ライトマップのベイク</h2>
+<p>Unityでは、静的で複雑なライティング効果を計算することができます。計算結果はライトマップと呼ばれる参照用テクスチャマップに保存されます。この計算プロセスをベイクといいます。</p>
+<p>ライトマップをベイクすると、シーン内にある静的なオブジェクトへの光源の影響が計算され、この結果がシーン内のジオメトリの上に、テクスチャとしてオーバーライドされます。これによってライティング効果が生み出されます。</p>
+<p>これらのライトマップにはサーフェスを直に照らす直接光と、シーン内にある他のオブジェクトやサーフェスから跳ね返ってくる間接光のどちらも含めることができます。<br>ライティングをベイクして生成されたライトマップには、ゲーム中に変更を加えることができません。そのため静的（スタティック）と呼ばれます。リアルタイムライトは、ライトマップされたシーンの上から加算的にオーバーライドして使うことはできますが、ライトマップ自体を変化させることはありません。  </p>
+<p>この手法により、ゲーム中にライトを自在に動かす自由と引き換えに、モバイル端末のような非力なハードウェア上でのパフォーマンス向上を狙うことができます。</p>
+<p><br></p>
+<h2 id="ライトの種類">ライトの種類</h2>
+<h3 id="ポイントライト">ポイントライト</h3>
+<p>ポイントライトは、空間のある一点に位置し、全方向に同等に光を放ちます。面に当たる光の方向は、その接地点とライトオブジェクトの中心点を結んだ直線です。光の強度は距離と共に減衰し、指定した距離で0になります。光の強度は、光源からの距離の2乗に反比例します。これは「逆2乗の法則」として知られ、実世界での光の性質に似ています。</p>
+<p>ポイントライトは、シーン内のランプや他の局所的な光源をシミュレーションするのに役立ちます。</p>
+<p><br></p>
+<h3 id="スポットライト">スポットライト</h3>
+<p>ポイントライト同様、スポットライトもその位置と光の当たる範囲がしてされています。ただし、スポットライトは限られた角度内の光になるため、照明領域が円錐状になります。円錐の中心は、ライトオブジェクトの前方方向を指しています。また、ライトはスポットライトの円錐の端で減衰します。</p>
+<p>一般的にスポットライトは、懐中電灯、車のヘッドライト、サーチライトなどといった人工的な光源として使用されます。スクリプトやアニメーションで方向を制御すれば、動きのあるスポットライトでシーン内のごく狭いエリアを照らし、印象的なライティング効果を作り出すことができます。</p>
+<p><br></p>
+<h3 id="ディレクショナルライト">ディレクショナルライト</h3>
+<p>ディレクショナルライトは、シーンで太陽光などの効果を作り出すのに役立ちます。太陽のように様々な様子に変化するディレクショナルライトは、限りなく遠くに存在する光源から発する光と考えることができます。ディレクショナルライトは明確な光源の位置を持たないので、ライトオブジェクトはシーン内のどこにでも置くことができます。<br>シーン内の全てのオブジェクトが、あたかも光が常に同じ方向から差しているかのように照らされます。ターゲットオブジェクトからライトまでの距離が設定されていないので、光が減衰することもありません。</p>
+<p>ディレクショナルライトは太陽や月のシミュレーションに使うこともできます。</p>
+<p><br></p>
+<h3 id="エリアライト">エリアライト</h3>
+<p>エリアライトは空間内の長方形によって決定されます。光は表面エリア全方向に均一に放射されますが、長方形の片側のみからになります。エリアライトの範囲に関しては、手動の制御はできません。ただし、光源から遠くなるにつれ、光の強度は距離の逆2乗で減衰します。ライティングの計算がプロセッサーにかなりの負担をかけるため、エリアライトはランタイムでは使用できず、ライトマップに米腐れる方法によってのみ使用することができます。</p>
+<p>エリアライトは複数の異なる方向から同時にオブジェクトを照らすので、他の種類のライトと比べてシェーディングが柔らかく繊細になります。写実的な街灯や、プレイヤーに近いところに複数並んだライトの表現などに使用できます。小さなエリアライトは小さな光源（家のインテリアのライトなど）をシミュレートでき、ポイントライトよりも写実的な光顔を得られます。</p>
+<p><br></p>
+<h3 id="発光マテリアル">発光マテリアル</h3>
+<p>エリアライトのように、発光マテリアルは、その表面が発行します。発光マテリアルはシーンの反射光を作るのに効果的で、色や強度などの関連するプロパティをゲームの間に変化させることができます。</p>
+<p>「Emission」はスタンダードシェーダーのプロパティで、シーンの静的オブジェクトを発光させることができます。デフォルトではEmissionの値は0に設定されています<br>発光マテリアルに範囲の値はありませんが、放射されるライトは、ここでも２次レートで減衰します。放射された光を受けることができるのはインスペクターウィンドウでStaticかLightmap Staticに設定されたオブジェクトだけです。</p>
+<p>発光マテリアルはネオンなどの目に見える光源を表現するのに役立ちます。</p>
+<p>また、発光マテリアルは静的オブジェクトに直接効果を与える場合のみ有効で、静的でないオブジェクトに発光マテリアルからライトを当てる必要がある場合は、ライトローブを使用する必要があります。</p>
+<h2 id="新規シーンの作成">新規シーンの作成</h2>
+<p>早速新規でシーンを作成したいと思います。</p>
+<p>現在のシーンがきちんと保存してあるのを確認してください。</p>
+<p><br></p>
+<p><img src="img/image2-1.png" alt=""></p>
+<p>シーンの保存ができたら新規でシーンを作成します。<br>プロジェクトウィンドウの＋アイコンから「Scene」を選択して下さい。</p>
+<p><br></p>
+<p><img src="img/image2-2.png" alt=""></p>
+<p>そうすると、新規のシーンが作成されるので、シーンの名前を「TitleScene」に変更してScenesフォルダの中に保存して下さい。</p>
+<p><br></p>
+<p><img src="img/image2-3.png" alt=""></p>
+<p>次に今作成したTitleSceneをダブルクリックしてこのシーンを開きます。<br>新規のシーンビューが表示されていれば成功です。</p>
+<p><br></p>
+<h2 id="タイトルの表示">タイトルの表示</h2>
+<p><img src="img/image2-4.png" alt=""></p>
+<p>次にタイトル用のテキストを表示します。<br>まずはヒエラルキーウィンドウから「UI -&gt; Text」を選択します。<br>そしてそのテキストの名前を「TitleText」に変更して下さい。<br>そしてインスペクターから</p>
+<p>PosX：0<br>PosY：60<br>Width : 320<br>Height : 100<br>Text : SampleTitle<br>FontSize : 60<br>Alignment : 上下左右ともにcenter<br>に変更して下さい。</p>
+<p>これで画面中央の少し上の方にタイトル用のテキストを配置することができました。</p>
+<p><br></p>
+<h2 id="ボタンの配置">ボタンの配置</h2>
+<p> <img src="img/image2-5.png" alt=""></p>
+<p> 次にスタートボタンを配置したいと思います。<br> ヒエラルキーから「UI -&gt; Button」を選択し、シーン内にボタンを配置します。<br> そしてボタンの名前を「StartButton」に変更し、<br> PosX : 0<br> PosY : -60<br> Width : 240<br> Height : 40<br> にして下さい。</p>
+<p> 子要素のTextも変更します。
+ ヒエラルキーでStartButtonの子要素のTextを選択し、<br> Text : START<br> FontSize : 32<br> にして下さい。</p>
+<p>これでスタートボタンの配置は完了です。<br>あとはこのスタートボタンを押したら先程のSampleSceneへ画面遷移させるようにします。</p>
+<p><br></p>
+<h2 id="画面遷移">画面遷移</h2>
+<p><img src="img/image2-6.png" alt=""></p>
+<p>まずは新規で空のゲームオブジェクトを作成します。<br>空のオブジェクトの作成方法はヒエラルキーから「CreateEmpty」を選択します。</p>
+<p>そして、名前をGameManagerにして下さい。</p>
+<p>GameManagerに新規でスクリプトを作成し、名前を「ScreenManager」とします。<br>作成したスクリプトはScriptsフォルダに格納しておいて下さい。</p>
+<p><br></p>
+<p>そしてこのScreenManagerスクリプトをVisualStudioで開きます。</p>
+<p>そしてコードを以下のように変更して下さい。</p>
+<pre><code class="lang-c#"><span class="hljs-keyword">using</span> System.Collections;
+<span class="hljs-keyword">using</span> System.Collections.Generic;
+<span class="hljs-keyword">using</span> UnityEngine;
+<span class="hljs-keyword">using</span> UnityEngine.SceneManagement;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">ScreenManager</span> : <span class="hljs-title">MonoBehaviour</span>
+{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnClickStartButton</span>(<span class="hljs-params"></span>)</span>
+    {
+        SceneManager.LoadScene(<span class="hljs-string">&quot;SampleScene&quot;</span>);
+    }
+}
+</code></pre>
+<p>まず<code>using UnityEngine.SceneManagement;</code>でこのファイル内でSceneManagement機能を使えるようにしておきます。</p>
+<p>次にOnClickStartButtonメソッドを作成します。<br>ここで注意してもらいたいのが、このメソッドがパブリックメソッドになっている点です。</p>
+<p>パブリックにした理由は、このメソッドを外部（ボタン）から呼び出せるようにするためです。このメソッドをprivateにしているとこのファイル内でしか扱えなくなり、ボタンクリックで呼び出せなくなるので気をつけて下さい。</p>
+<p><code>SceneManager.LoadScene(&quot;SampleScene&quot;);</code>で<code>SceneneManager</code>クラスの<code>LoadScene</code>メソッドを利用してSampleSceneという名前のシーンを読み込むようにしています。<br><code>LoadScene</code>メソッドは括弧内の引数に記述されたシーンを読み込むという命令文になっています。</p>
+<p>ここまで記述終わりましたら保存してUnityに戻りましよう。</p>
+<p><br></p>
+<p><img src="img/image2-7.gif" alt=""></p>
+<p>Unityに戻ったら、ヒエラルキーウィンドウでStartButtonを選択し、インスペクターウィンドウから「OnClick()」を見つけて下さい。</p>
+<p>OnClick()を見つけたら、そちらの「＋」アイコンをクリックします。<br>こちらのOnClick()はボタンがクリックされた時の動作を設定するパラメータです。</p>
+<p>そうすると、上記の画像のような項目が追加されますので、その空欄の部分にヒエラルキーウィンドウから「GameManager」オブジェクトをドラッグ&amp;ドロップして下さい。</p>
+<p>次に右側の項目から「ScreenManager -&gt; OnClickStartButton()」を選択します。ScreenManagerが表示されない場合は、GameManagerオブジェクトにScreenManagerスクリプトがアタッチされているか確認して下さい。<br>OnClickStartButton()が項目にない場合はこのメソッドがきちんとパブリックメソッドになっているか確認して下さい。</p>
+<p><br></p>
+<p><img src="img/image2-8.gif" alt=""></p>
+<p>次に、シーンをBuildするシーンとして登録します。</p>
+<p>Unityから「File -&gt; BuildSettings」を開きましょう。</p>
+<p>そして、右上の方にある「AddOpenScenes」をクリックして下さい。<br>これで現在のシーンを登録できました。<br>次にゲームシーンである「SampleScene」も登録します。プロジェクトウィンドウからSampleSceneをドラッグ&amp;ドロップで「ScenensInBuild」の場所に追加して下さい。<br>これで登録は完了です。</p>
+<div class="warning">
+    シーンは上から順番に再生されるので上にTitleSceneを配置して下さい。<br>
+    順番はドラッグ&amp;ドロップでも変更できます。
+</div>
+
+<p><br></p>
+<p>こちらのウィンドウを消してUnityを保存し、実行してみましょう。</p>
+<p>Startボタンを押してきちんと画面遷移（Unityちゃんがいるシーンに移動）できていれば成功です。</p>
+<h2 id="ゲームのビルド">ゲームのビルド</h2>
+<p>次に現在のUnityのプロジェクトをビルドしたいと思います。<br>今回はPCゲームとしてビルドしてみましょう。<br>ただし、このままでもビルドできるのですが１つ問題点があります。</p>
+<p>それは現状のままアプリをビルドすると、アプリが全画面で表示され、終了させる事ができないという点です。</p>
+<p>WebGLへのビルドはブラウザの閉じるボタンをクリックすれば終了できるのですが、PCゲームだと終了ボタンを作らないと強制終了しか終わらせる方法がありません。</p>
+<p>ですので、今回は「ESC」ボタンを押したらアプリを終了できるように修正します。</p>
+<p><br></p>
+<p><img src="img/image2-9.png" alt=""></p>
+<p>まずはプロジェクトウィンドウで新規に「GameQuit」スクリプトを作成し、Scriptsフォルダに格納して下さい。</p>
+<p><br></p>
+<p>そしてGameQuitスクリプトをVisualStudioで開き、コードを以下のように変更して下さい。</p>
+<pre><code class="lang-c#"><span class="hljs-keyword">using</span> System.Collections;
+<span class="hljs-keyword">using</span> System.Collections.Generic;
+<span class="hljs-keyword">using</span> UnityEngine;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">GameQuit</span> : <span class="hljs-title">MonoBehaviour</span>
+{
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Update</span>(<span class="hljs-params"></span>)</span>
+    {
+        <span class="hljs-keyword">if</span> (Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
+}
+</code></pre>
+<p><code>if (Input.GetKey(KeyCode.Escape))</code>でパソコンのESCキーが押されたらという条件分岐になります。</p>
+<p><code>Application.Quit();</code>でアプリケーションを終了させるという命令文になっていますので、ESCキーが押された瞬間にこちらのアプリケーションが終了されます。</p>
+<p>ここまでを保存してUnityに戻りましょう。</p>
+<p><br></p>
+<p><img src="img/image2-10.png" alt=""></p>
+<p>ヒエラルキーでGameManagerを選択し、インスペクターにGameQuitスクリプトをドラッグ&amp;ドロップでアタッチして下さい。<br>そしてこちらのシーンを保存します。</p>
+<p><br></p>
+<p><img src="img/image2-11.png" alt=""></p>
+<p>同様にSampleSceneを開き、新しく空のGameManagerオブジェクトを作成し、GameQuitスクリプトをアタッチして保存して下さい。</p>
+<p>これで準備か完了です。</p>
+<p><br></p>
+<p><img src="img/image2-12.png" alt=""></p>
+<p>UnityのFileからBuildSettingsを開きましょう。<br>そしてビルドするシーンが登録されているか、ビルドするアプリケーションのプラットフォームは合っているか（今回はPC）を確認して画面右下の「Build &amp; Run」をクリックして下さい。</p>
+<p><br></p>
+<p><img src="img/image2-13.png" alt=""></p>
+<p>そうすると、このように保存先とアプリケーション名を入力するウィンドウが開きますので、任意の保存先とアプリケーション名を入力し、「Save」をクリックして下さい。</p>
+<p><br></p>
+<p><img src="img/image2-14.png" alt=""></p>
+<p>ビルドに時間がかかると思いますが、きちんとPCアプリとして実行され、ESCキーの入力で終了できていれば成功です。</p>
+<p><br></p>
+<hr>
+
+<h2 id="アセットの建物を使ってみる">アセットの建物を使ってみる</h2>
+<p>もしゲーム画面の風景が寂しいと感じる場合は、AssetStoreから建物の3Dデータをインポートし、使用してみましょう。</p>
+<p><br></p>
+<p><img src="img/image2-15.png" alt=""></p>
+<p>好きなものを使ってみて構わないのですが、今回は「FurnishedCabin」というアセットをダウンロードして使用してみます。<br>まずはこちらをAssetStoreで検索し、インポートしましょう。</p>
+<p><br></p>
+<p><img src="img/image2-16.png" alt=""></p>
+<p>次にSampleSceneを開き、ヒエラルキーから「unitychan_dynamic」をプロジェクトウィンドウにドラッグ&amp;ドロップしてプレハブ化しておきましょう。  </p>
+<p><br></p>
+<p><img src="img/image2-17.png" alt=""></p>
+<p>その時にこのようなウィンドウが表示されると思うので、「OriginalPrefab」を選択して下さい。これはもとのプレハブから切り離して新しいプレハブを作成するという意味です。</p>
+<p><br></p>
+<p><img src="img/image2-18.png" alt=""></p>
+<p>そうしたら今作成したunitychan_dynamicというプレハブを新しく「Prefabs」というフォルダを作成して格納しておきましょう。</p>
+<p><br></p>
+<p><img src="img/image2-19.png" alt=""></p>
+<p>次に現在のシーンを保存し、プロジェクトウィンドウから「FurnishedCabin -&gt; Scenes -&gt; Demo」をダブルクリックで開いて下さい。</p>
+<p>そうすると、このようにサンプルとして作成されているシーンが表示されます。</p>
+<p><br></p>
+<p><img src="img/image2-20.png" alt=""></p>
+<p>そしてプロジェクトウィンドウから先程プレハブ化した「unitychan_dynamic」と、StandardAssetsから「Cameras -&gt; Prefabs -&gt; FreeLookCameraRig」をヒエラルキーにドラッグ&amp;ドロップして配置して下さい。<br>Unityちゃんは現在のFPSControllerと同じ場所に配置すると綺麗に写るかと思います。<br>そしてそのFPSControllerは不要なので削除して下さい。</p>
+<p>最後にFreeLookCameraRigのTargetの部分にunitychan_dynamicをドラッグ&amp;ドロップして準備完了です。</p>
+<p>Unityを実行してみて3Dキャラクターが家の中を自由に動き回っていれば成功です。</p>
+<p><img src="img/image2-21.png" alt=""></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="page1.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: マテリアルの作成と設定">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"ライトの作成と配置","level":"1.3","depth":1,"previous":{"title":"マテリアルの作成と設定","level":"1.2","depth":1,"path":"page1.md","ref":"./page1.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"page2.md","mtime":"2021-02-09T01:19:55.864Z","type":"markdown"},"gitbook":{"version":"3.6.15","time":"2021-02-09T01:20:21.085Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
